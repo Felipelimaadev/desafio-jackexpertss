@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: desafio-jackexperts.duckdns.org  # Substitua pelo seu subdomínio
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: desafio-jackexpertss-novo  # Nome do serviço da sua aplicação
+            port:
+              number: 80
+
